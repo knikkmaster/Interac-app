@@ -3,30 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Google OAuth App</title>
+    <title>My Stylish Web App</title>
     <link rel="stylesheet" href="styles.css">
-    <!-- Google Platform Library -->
-    <script src="https://accounts.google.com/gsi/client" async defer></script>
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
 </head>
 <body>
-    <div id="g_id_onload"
-        data-client_id="YOUR_CLIENT_ID"
-        data-login_uri="http://localhost:YOUR_PORT"
-        data-callback="handleCredentialResponse"
-        data-auto_prompt="false">
+    <div class="container">
+        <h1 class="company-name">Your Company Name</h1>
+        <div id="g_id_onload" data-client_id="YOUR_CLIENT_ID.apps.googleusercontent.com" data-callback="onSignIn"></div>
+        <div class="g_id_signin" data-type="standard"></div>
+        <button id="openLinkButton" class="styled-button" style="display: none;">Open Link</button>
     </div>
-
-    <div class="g_id_signin"
-        data-type="standard"
-        data-size="large"
-        data-theme="outline"
-        data-text="sign_in_with"
-        data-shape="rectangular"
-        data-logo_alignment="left">
-    </div>
-
-    <button id="openLinkButton" style="display: none;">Open Link</button>
-
     <script src="script.js"></script>
 </body>
 </html>
