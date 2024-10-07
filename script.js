@@ -14,7 +14,7 @@ function onSignIn(googleUser) {
 document.getElementById('loginButton').addEventListener('click', function() {
     gapi.load('auth2', function() {
         gapi.auth2.init({
-            client_id: 'YOUR_CLIENT_ID.apps.googleusercontent.com'
+            client_id: '751485603242-99q9u0sdfin7046mb2maour9epri8pot.apps.googleusercontent.com'
         }).then(function(auth2) {
             auth2.signIn().then(onSignIn);
         });
