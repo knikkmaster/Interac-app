@@ -17,30 +17,23 @@
 
         function onSignIn(googleUser) {
             const profile = googleUser.getBasicProfile();
-            console.log('ID: ' + profile.getId());
-            console.log('Name: ' + profile.getName());
-            console.log('Image URL: ' + profile.getImageUrl());
-            console.log('Email: ' + profile.getEmail());
+            // You can display the user's name or other info if you want
+            document.getElementById('welcomeMessage').innerText = 'Welcome, ' + profile.getName();
 
             // Hide login screen and show app content after successful login
             document.getElementById('loginScreen').style.display = 'none';
             document.getElementById('appContent').style.display = 'block';
-
-            // Display the logout button
             document.getElementById('logoutButton').style.display = 'block';
         }
 
         function logout() {
             const auth2 = gapi.auth2.getAuthInstance();
             auth2.signOut().then(function () {
-                console.log('User signed out.');
-
                 // Hide app content and show login screen after logout
                 document.getElementById('appContent').style.display = 'none';
                 document.getElementById('loginScreen').style.display = 'block';
-
-                // Hide the logout button
                 document.getElementById('logoutButton').style.display = 'none';
+                document.getElementById('welcomeMessage').innerText = ''; // Clear welcome message
             });
         }
     </script>
@@ -52,7 +45,7 @@
             <button id="googleLoginButton" class="styled-button">Login with Google</button>
         </div>
         <div id="appContent" style="display: none;">
-            <h1 class="company-name">Welcome to the App!</h1>
+            <h1 id="welcomeMessage" class="company-name"></h1>
             <button id="logoutButton" class="styled-button" style="display: none;">Logout</button>
             <button id="openLinkButton" class="styled-button">Open Link</button>
             <button id="anotherLinkButton" class="styled-button">Another Link</button>
