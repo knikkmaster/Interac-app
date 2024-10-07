@@ -1,12 +1,18 @@
 body {
-    font-family: Arial, sans-serif;
-    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
     margin: 0;
-    padding: 0;
+    font-family: Arial, sans-serif;
 }
 
 button {
     padding: 10px 20px;
     font-size: 16px;
+    margin: 10px;
+}
+
+.g_id_signin {
     margin-top: 20px;
 }
