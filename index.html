@@ -6,8 +6,29 @@
     <title>My Stylish Web App</title>
     <link rel="stylesheet" href="styles.css">
     <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <script>
+        function onLoad() {
+            gapi.load('auth2', function() {
+                gapi.auth2.init({
+                    client_id: '751485603242-99q9u0sdfin7046mb2maour9epri8pot.apps.googleusercontent.com'
+                });
+            });
+        }
+
+        function onSignIn(googleUser) {
+            const profile = googleUser.getBasicProfile();
+            console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+            console.log('Name: ' + profile.getName());
+            console.log('Image URL: ' + profile.getImageUrl());
+            console.log('Email: ' + profile.getEmail());
+
+            // Hide login screen and show app content after successful login
+            document.getElementById('loginScreen').style.display = 'none';
+            document.getElementById('appContent').style.display = 'block';
+        }
+    </script>
 </head>
-<body>
+<body onload="onLoad()">
     <div class="container">
         <div id="loginScreen">
             <h1 class="company-name">Interac App</h1>
