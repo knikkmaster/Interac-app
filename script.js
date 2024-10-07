@@ -12,6 +12,6 @@ function onSignIn(googleUser) {
 
 // Button event listener for opening the link
 document.getElementById('openLinkButton').addEventListener('click', function() {
-    const link = 'https://example.com'; // Change this to your desired link
+    const link = 'https://docs.google.com/forms/d/e/1FAIpQLSdlHG0hKNJb1nt4A1OemUE4yuVVHElbl_qI1I2dKtgIWlMhPg/viewform'; // Change this to your desired link
     window.open(link, '_blank');
 });
