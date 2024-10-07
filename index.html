@@ -3,12 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Web App</title>
+    <title>Google OAuth App</title>
     <link rel="stylesheet" href="styles.css">
+    <!-- Google Platform Library -->
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
 </head>
 <body>
-    <h1>Welcome to My Web App</h1>
+    <!-- Google OAuth button -->
+    <div id="g_id_onload"
+        data-client_id="751485603242-99q9u0sdfin7046mb2maour9epri8pot.apps.googleusercontent.com"
+        data-callback="handleCredentialResponse"
+        data-auto_prompt="false">
+    </div>
+    
+    <div class="g_id_signin"
+        data-type="standard"
+        data-size="large"
+        data-theme="outline"
+        data-text="sign_in_with"
+        data-shape="rectangular"
+        data-logo_alignment="left">
+    </div>
+
+    <!-- Button to open link, hidden until login -->
     <button id="openLinkButton" style="display: none;">Open Link</button>
+
     <script src="script.js"></script>
 </body>
 </html>
