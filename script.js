@@ -1,3 +1,8 @@
+document.getElementById('googleLoginButton').addEventListener('click', function() {
+    const auth2 = gapi.auth2.getAuthInstance();
+    auth2.signIn().then(onSignIn);
+});
+
 function onSignIn(googleUser) {
     const profile = googleUser.getBasicProfile();
     console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
@@ -9,17 +14,6 @@ function onSignIn(googleUser) {
     document.getElementById('loginScreen').style.display = 'none';
     document.getElementById('appContent').style.display = 'block';
 }
-
-// Event listener for the Login button
-document.getElementById('loginButton').addEventListener('click', function() {
-    gapi.load('auth2', function() {
-        gapi.auth2.init({
-            client_id: '751485603242-99q9u0sdfin7046mb2maour9epri8pot.apps.googleusercontent.com'
-        }).then(function(auth2) {
-            auth2.signIn().then(onSignIn);
-        });
-    });
-});
 
 // Button event listener for opening the link
 document.getElementById('openLinkButton').addEventListener('click', function() {
