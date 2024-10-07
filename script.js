@@ -1,11 +1,13 @@
 document.getElementById('googleLoginButton').addEventListener('click', function() {
     const auth2 = gapi.auth2.getAuthInstance();
-    auth2.signIn().then(onSignIn);
+    auth2.signIn().then(onSignIn).catch(function(error) {
+        console.log('Error signing in: ', error);
+    });
 });
 
 function onSignIn(googleUser) {
     const profile = googleUser.getBasicProfile();
-    console.log('ID: ' + profile.getId());
+    console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
     console.log('Name: ' + profile.getName());
     console.log('Image URL: ' + profile.getImageUrl());
     console.log('Email: ' + profile.getEmail());
@@ -13,8 +15,6 @@ function onSignIn(googleUser) {
     // Hide login screen and show app content after successful login
     document.getElementById('loginScreen').style.display = 'none';
     document.getElementById('appContent').style.display = 'block';
-
-    // Display the logout button
     document.getElementById('logoutButton').style.display = 'block';
 }
 
@@ -42,8 +42,6 @@ function logout() {
         // Hide app content and show login screen after logout
         document.getElementById('appContent').style.display = 'none';
         document.getElementById('loginScreen').style.display = 'block';
-
-        // Hide the logout button
         document.getElementById('logoutButton').style.display = 'none';
     });
 }
