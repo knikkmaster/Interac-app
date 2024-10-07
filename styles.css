@@ -29,19 +29,4 @@ body {
     border-radius: 8px;
     cursor: pointer;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    transition: background-color 0.3s, transform 0.2s;
-}
-
-.styled-button:hover {
-    background-color: #0056b3; /* Darker shade on hover */
-    transform: translateY(-2px); /* Slight lift on hover */
-}
-
-.styled-button:active {
-    transform: translateY(0); /* Reset lift on click */
-}
-
-/* Google Sign-In Button Styles */
-.g_id_signin {
-    margin-bottom: 20px; /* Space between the sign-in button and the link button */
-}
+    transition: background-color 
