@@ -10,15 +10,24 @@
         function onLoad() {
             gapi.load('auth2', function() {
                 gapi.auth2.init({
-                    client_id: '751485603242-99q9u0sdfin7046mb2maour9epri8pot.apps.googleusercontent.com'
+                    client_id: '751485603242-99q9u0sdfin7046mb2maour9epri8pot.apps.googleusercontent.com' // Replace with your actual Client ID
+                }).then(function(auth2) {
+                    // Attach the click handler to the login button
+                    document.getElementById('googleLoginButton').addEventListener('click', function() {
+                        auth2.signIn().then(onSignIn).catch(function(error) {
+                            console.error('Login failed: ', error);
+                        });
+                    });
                 });
             });
         }
 
         function onSignIn(googleUser) {
             const profile = googleUser.getBasicProfile();
-            // You can display the user's name or other info if you want
-            document.getElementById('welcomeMessage').innerText = 'Welcome, ' + profile.getName();
+            console.log('ID: ' + profile.getId());
+            console.log('Name: ' + profile.getName());
+            console.log('Image URL: ' + profile.getImageUrl());
+            console.log('Email: ' + profile.getEmail());
 
             // Hide login screen and show app content after successful login
             document.getElementById('loginScreen').style.display = 'none';
@@ -29,11 +38,12 @@
         function logout() {
             const auth2 = gapi.auth2.getAuthInstance();
             auth2.signOut().then(function () {
+                console.log('User signed out.');
+
                 // Hide app content and show login screen after logout
                 document.getElementById('appContent').style.display = 'none';
                 document.getElementById('loginScreen').style.display = 'block';
                 document.getElementById('logoutButton').style.display = 'none';
-                document.getElementById('welcomeMessage').innerText = ''; // Clear welcome message
             });
         }
     </script>
@@ -45,7 +55,7 @@
             <button id="googleLoginButton" class="styled-button">Login with Google</button>
         </div>
         <div id="appContent" style="display: none;">
-            <h1 id="welcomeMessage" class="company-name"></h1>
+            <h1 class="company-name">Welcome to the App!</h1>
             <button id="logoutButton" class="styled-button" style="display: none;">Logout</button>
             <button id="openLinkButton" class="styled-button">Open Link</button>
             <button id="anotherLinkButton" class="styled-button">Another Link</button>
